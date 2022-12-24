@@ -1,19 +1,19 @@
 const mongoose = require('mongoose')
 
-const schema = mongoose.schema
+const Schema = mongoose.Schema
 
-const workoutSchema = new schema({
+const workoutSchema = new Schema({
   
   title: {
-    type: string,
+    type: String,
     required : true
   },
   reps: {
-    type: number,
+    type: Number,
     required : true
   },
   load: {
-    type: number, 
+    type: Number, 
     required : true
   }
   
