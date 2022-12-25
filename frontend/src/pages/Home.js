@@ -1,4 +1,5 @@
-import React,{useEffect , useState} from 'react'
+import React, { useEffect, useState } from 'react'
+import WorkoutsDetails from '../components/WorkoutsDetails';
 import axios from 'axios';
 
 function Home() {
@@ -13,12 +14,12 @@ function Home() {
 }, [])
 
   return (
-    <div>
+    <div className='home'>
       <div className="workouts">
         {
           workouts && workouts.map((workout, index) => {
             return (
-              <p key={workout._id}> {workout.title } </p>
+              <WorkoutsDetails key={workout._id} workout={ workout} />
             )
           })
         }
