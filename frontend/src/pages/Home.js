@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import WorkoutsDetails from '../components/WorkoutsDetails';
+import WorkoutForm from '../components/WorkoutForm';
 import axios from 'axios';
 
 function Home() {
@@ -23,7 +24,8 @@ function Home() {
             )
           })
         }
-       </div>
+      </div>
+      <WorkoutForm />
     </div>
   )
 }
