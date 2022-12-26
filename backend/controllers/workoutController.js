@@ -29,9 +29,9 @@ const readWorkout = async (req, res) => {
 
 const createWorkout = async (req, res) => {
   const { title, reps, load } = req.body;
-  const workout = await workoutModel.create({ title, reps, load });
-
+  
   try {
+    const workout = await workoutModel.create({ title, reps, load });
     res.status(200).json(workout);
   } catch (error) {
     res.status(400).json({ error: error.message });
