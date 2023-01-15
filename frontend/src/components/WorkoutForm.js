@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { WorkoutsContext } from "../context/workoutContext";
 
 function WorkoutForm() {
   const [title, setTitle] = useState("");
@@ -7,26 +8,12 @@ function WorkoutForm() {
   const [reps, setReps] = useState("");
   const [error, setError] = useState(null);
 
+  console.log(WorkoutsContext);
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     const workout = { title, load, reps };
-    // const response = await fetch('http://localhost:4000/api/workouts/', {
-    //   method: 'POST',
-    //   body: JSON.stringify(workout),
-    //   headers: {
-    //     'content-type' : 'application/json'
-    //   }
-
-    // })
-    // const json = await response.json()
-    // if (!response.ok) {
-    //   setError(json.error)
-    // }
-    // if (response.ok) {
-    //   setError(null)
-    //   console.log('new workout added ' , json);
-    // }
-
+    
     await axios
       .post("http://localhost:4000/api/workouts/", workout)
       .then((response) => {

@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import WorkoutsDetails from '../components/WorkoutsDetails';
 import WorkoutForm from '../components/WorkoutForm';
+import { useWorkoutsContext } from '../hooks/useWorkoutsContext';
 import axios from 'axios';
 
 function Home() {
-  const [workouts , setWorkouts] = useState(null)
+  const { workouts, dispatch } = useWorkoutsContext()
   
   useEffect(() => {
     axios
     .get("http://localhost:4000/api/workouts/")
-    .then(function (response) {
-      setWorkouts(response.data)
+      .then(function (response) {
+      const json = response.data
+      dispatch({type : 'SET_WORKOUTS' , payload: json})
     });
 }, [])
 
