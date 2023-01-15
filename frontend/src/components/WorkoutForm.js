@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { WorkoutsContext } from "../context/workoutContext";
-
+import { useWorkoutsContext } from '../hooks/useWorkoutsContext';
 function WorkoutForm() {
+  const {  dispatch } = useWorkoutsContext()
   const [title, setTitle] = useState("");
   const [load, setLoad] = useState("");
   const [reps, setReps] = useState("");
   const [error, setError] = useState(null);
 
-  console.log(WorkoutsContext);
+
   
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,6 +22,8 @@ function WorkoutForm() {
         setReps("");
         setError(null);
         console.log("new workout added", response.data);
+        dispatch({type:'CREATE_WORKOUTS',payload:response.data})
+
       })
       .catch((error) => {
         setError(error.response.data.error);
