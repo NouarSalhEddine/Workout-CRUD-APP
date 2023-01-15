@@ -14,7 +14,7 @@ function Home() {
       const json = response.data
       dispatch({type : 'SET_WORKOUTS' , payload: json})
     });
-}, [])
+}, [dispatch])
 
   return (
     <div className='home'>
